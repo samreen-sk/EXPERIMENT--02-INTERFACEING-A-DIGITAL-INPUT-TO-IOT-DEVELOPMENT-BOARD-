@@ -1,8 +1,7 @@
-###  DATE: 
-
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
+###  DATE: 25/05/2025 
+###  NAME: SHAIK SAMREEN
+###  ROLL NO : 212223110047
+###  DEPARTMENT: B.E CSE(IOT)
 
 
 # EXPERIMENT--02-INTERFACING-A-DIGITAL-INPUT-TO-IOT-DEVELOPMENT-BOARD-
@@ -77,12 +76,39 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
+```
+#include "main.h"
+#include "stdbool.h"
+void IRsensor();
+bool IRsensorop;
+while(1)
+{
+	IRsensor();
+}
+void IRsensor()
+{
+IRsensorop=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_3);
+if (IRsensorop==1)
+{
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
+	HAL_Delay(500);
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+	HAL_Delay(500);
+}
+else
+{
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+}
+}
+```
 
 
 
 ## Output  :
- 
- 
+ ![421924727-f3ea4f13-1016-4919-8569-77e1cb6cbd1c](https://github.com/user-attachments/assets/a3301ff0-6250-4500-a994-e4b8bc12a7ce)
+
+ ![421924810-7fcebd14-60ce-42e5-8710-56f6c838bb61](https://github.com/user-attachments/assets/f7f65fa5-2b67-4352-866e-f4988c575e59)
+
  
  
 ## Result :
