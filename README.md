@@ -1,12 +1,12 @@
-###  DATE: 
-
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
-
 
 # EXPERIMENT--02-INTERFACING-A-DIGITAL-INPUT-TO-IOT-DEVELOPMENT-BOARD-
- 
+
+###  DATE: 20/05/2006
+###  NAME: SHAIK SAMREEN
+###  ROLL NO : 212223110047
+###  DEPARTMENT: BE.CSE(IOT)
+
+
 
 ## Aim: To Interface a Digital Input  (IR pair ) to ARM IOT development board and write a  program to obtain  the data 
 ## Components required: STM32 CUBE IDE, ARM IOT development board,  STM programmer tool.
@@ -78,12 +78,51 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 ## STM 32 CUBE PROGRAM :
 
+```
+#include "main.h"
+#include "stdbool.h"
+bool IRSENSOR;
+void  IRPAIR();
 
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+int main(void)
+{
+ 
+  HAL_Init();                                   
+  SystemClock_Config();
+  MX_GPIO_Init();
+ 
+  while (1)
+  {
+    IRPAIR();
+  }
+ 
+}
+void IRPAIR()
+{
+	IRSENSOR=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4);
+		if(IRSENSOR==0)
+		{
+			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
+			HAL_Delay(1000);
+			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+			HAL_Delay(1000);
+		}
+		else
+		{
+			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+			HAL_Delay(1000);
+		}
+}
+```
 
 ## Output  :
- 
- 
- 
+## DETECTED
+![431276780-be41c975-0c1f-46ef-8e1d-3bfda4c724c1](https://github.com/user-attachments/assets/09c98c19-1e4b-46a9-a031-d7a0175f1948)
+## NOT DETECTED
+ ![431276991-914078f5-7f20-462b-b5ed-886ac60c6364](https://github.com/user-attachments/assets/844d2a62-70ef-4b63-b02d-244f0a6a0f84)
+
  
 ## Result :
 Interfacing a digital Input (ir pair) with ARM microcontroller based IOT development is executed and the results are verified.
